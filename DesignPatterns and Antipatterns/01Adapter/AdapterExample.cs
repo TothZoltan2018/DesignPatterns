@@ -13,8 +13,8 @@ namespace _01Adapter
         {
             //if (repository == null) { throw new ArgumentException(nameof(repository)) }
             //this.repository = repository == null ? throw new ArgumentException(nameof(repository)) : repository;
-            this.repository = repository ?? throw new ArgumentException(nameof(repository));
-            this.service = service ?? throw new ArgumentException(nameof(service));
+            this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
+            this.service = service ?? throw new ArgumentNullException(nameof(service));
 
             
 

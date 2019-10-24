@@ -3,12 +3,12 @@ using System.Collections.Generic;
 
 namespace _01Adapter
 {
-    public class MessageService : IMessageService
+    public class MessageTestService : IMessageService
     {
         //Ne hasznalj null-t: null object pattern
         private List<Message> messages = new List<Message>();
 
-        public MessageService()
+        public MessageTestService()
         {
         }
 
