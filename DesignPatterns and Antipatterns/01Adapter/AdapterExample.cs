@@ -29,7 +29,7 @@ namespace _01Adapter
             //Az adatokat kszolgaltato osztaly neve: repository.
             //Viszont mar kivulrol megkapom Dependency Injection-nel (IAddressRepository repository), ezert nem kell osztalypeldanyt letrehoznunk
             //Azaz a fuggosegeimet kivulrol kapom neg, nem en allitom elo. Ezert nem kell az alabbi sor:
-            //var repo = new AddressRepository(); //Az ilyen, adatokat szolgaltato osztalyt nonvencionalisan Repository-nak hivjak
+            //var repo = new AddressRepository(); //Az ilyen, adatokat szolgaltato osztalyt konvencionalisan Repository-nak hivjak
 
 
             //2. Legyen egy email megoldasunk (uzenetkuldo megoldas)
@@ -39,8 +39,8 @@ namespace _01Adapter
             //var message = new MailMessage;
             //message.To.Add(new MailAddress("email cim"));
             //stb.
-            //smtp helyett skkal jobb pl. a sendgrid vagy mailchimp api-jat hasznalni.
-            //de lehet, hogy sms-t akarunk msjd kesobb hasznalni stb...
+            //smtp helyett sokkal jobb pl. a sendgrid vagy mailchimp api-jat hasznalni.
+            //de lehet, hogy sms-t akarunk majd kesobb hasznalni stb...
 
             //##########################################################
             //A kod ujrafelhasznalhatosaganak feltetele es biztositeka:
