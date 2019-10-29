@@ -19,6 +19,7 @@ namespace _02Strategy
     {
         static void Main(string[] args)
         {
+            #region nem jo megoldasok
             var service = new DataService(new AddressStrategyTestRepo());
 
             // - Kerjuk le, hogy hany email-t kuldtunk mar eddig
@@ -42,6 +43,25 @@ namespace _02Strategy
             var service2 = new DataService2(new AddressStrategyTestRepo());
             count = service2.Report(ReportType.Average); //A ReportType-ot nem hasznalja az override-olt Report fgv (mindegy, hogy Sum vag Average)
             Console.WriteLine($"VIP email-ek szama: {count}");
+            Console.WriteLine(); Console.WriteLine();
+            #endregion
+
+            var service3 = new DataService(new AddressStrategyTestRepo(), new SumStrategy());
+            //lehet ilyet is csinalni, csak a null ertekere figyelni kell
+            //service3.SetStrategy(new SumStrategy());
+
+            count = service3.ReportWithStrategy();
+            Console.WriteLine($"Email-ek szama - strategiaval: {count}");
+            Console.WriteLine();
+
+            //Ilyet is lehetne implementalni, szinten a null ertekere figyelni kell
+            //avg = service3.ReportWithStrategy(new AvgStrategy());
+            var service4 = new DataService(new AddressStrategyTestRepo(), new AvgStrategy());
+
+            Console.WriteLine($"Email-ek atlagaos szama - strategiaval: {service4.ReportWithStrategy()}");
+            Console.WriteLine();
+
+
 
             Console.ReadLine();
         }

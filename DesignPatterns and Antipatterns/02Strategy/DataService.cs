@@ -6,13 +6,28 @@ namespace _02Strategy
 {
     public class DataService
     {
-        protected IAddressRepository repository; //hogy lassa a leszarmaztatott (DataService2) osztaly is
+        protected IAddressRepository repository; //protected, hogy lassa a leszarmaztatott (DataService2) osztaly is
+        //private SumStrategy strategy;
+        private IStrategy strategy;
 
         public DataService(IAddressRepository repository)
         {
             this.repository = repository ?? throw new ArgumentNullException(nameof(repository));
         }
 
+        //public DataService(IAddressRepository repository, SumStrategy strategy) : this(repository)
+        public DataService(IAddressRepository repository, IStrategy strategy) : this(repository)
+        {
+            this.strategy = strategy ?? throw new ArgumentNullException(nameof(strategy));            
+        }
+
+        public int ReportWithStrategy()
+        {
+            var list = repository.GetAddresses();
+            return strategy.Operation(list);
+        }
+
+        #region nem jo megoldasok
         public int GetSumEmailCount()
         {
             return repository.GetAddresses().Sum(x => x.EmailCount); 
@@ -37,6 +52,7 @@ namespace _02Strategy
             }
 
         }
+
     }
     public enum ReportType { Sum, Average }
 
@@ -61,5 +77,5 @@ namespace _02Strategy
 
 
     }
-
+#endregion
 }   
