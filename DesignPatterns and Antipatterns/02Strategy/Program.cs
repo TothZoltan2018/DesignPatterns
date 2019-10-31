@@ -18,10 +18,9 @@ namespace _02Strategy
     class Program
     {
         static void Main(string[] args)
-        {
-            #region nem jo megoldasok
+        {            
             var service = new DataService(new AddressStrategyTestRepo());
-
+            #region nem jo megoldasok
             // - Kerjuk le, hogy hany email-t kuldtunk mar eddig
             var count = service.GetSumEmailCount();
             Console.WriteLine($"Email-ek szama: {count}");
@@ -45,7 +44,8 @@ namespace _02Strategy
             Console.WriteLine($"VIP email-ek szama: {count}");
             Console.WriteLine(); Console.WriteLine();
             #endregion
-
+            //###################### Jo megoldasok ######################
+            //###################### 1. Strategia minta ######################
             var service3 = new DataService(new AddressStrategyTestRepo(), new SumStrategy());
             //lehet ilyet is csinalni, csak a null ertekere figyelni kell
             //service3.SetStrategy(new SumStrategy());
@@ -60,6 +60,26 @@ namespace _02Strategy
 
             Console.WriteLine($"Email-ek atlagaos szama - strategiaval: {service4.ReportWithStrategy()}");
             Console.WriteLine();
+
+            //#################### 2. A .NET megoldasa: delegate ########################
+                        
+            Console.WriteLine();
+            //A WriteLine ujabb formatumaval ( $"...") nem tudtam megadni... Talan nem szereti a sortorest.
+            Console.WriteLine("Email-ek szama - delegate-tel: {0}", service.ReportWithDelegate(
+                list => list.Sum(x => x.EmailCount) //Ez a strategiat leiro delegate
+            )); 
+
+            
+            Console.WriteLine("Email-ek atlagos szama - delegate-tel: {0}", service.ReportWithDelegate(
+                list => //Ez a strategia mintat leiro delegate
+                {
+                   avg = (int)Math.Round(list.Average(x => x.EmailCount));
+                   return avg;
+                }
+            ));
+            
+            Console.WriteLine();
+
 
 
 

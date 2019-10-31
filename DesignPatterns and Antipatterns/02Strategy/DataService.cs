@@ -1,5 +1,6 @@
 ﻿using _01Adapter;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 namespace _02Strategy
@@ -25,6 +26,13 @@ namespace _02Strategy
         {
             var list = repository.GetAddresses();
             return strategy.Operation(list);
+        }
+
+        public int ReportWithDelegate(Func<IList<Address>, int> strategy) //A strategy egy Addresslista feluletet varo, intet visszaado delegate
+        {
+            if (strategy == null) throw new ArgumentNullException(nameof(strategy));
+                       
+            return strategy(repository.GetAddresses()); //Vegrehajtja a delegate-nek megfelelo, kintrol megkapott fgv-t.
         }
 
         #region nem jo megoldasok
@@ -53,12 +61,14 @@ namespace _02Strategy
 
         }
 
+
     }
+
     public enum ReportType { Sum, Average }
 
     public class DataService2 : DataService
     {
-        //private IAddressRepository repository; //az ososztalybol atszik, mert ott protected
+        //private IAddressRepository repository; //az ososztalybol latszik, mert ott protected
 
         public DataService2(IAddressRepository repository)
             : base(repository) //mivel nincs alapetelmezett konstruktora, hiszem defialtam egy parametereset
