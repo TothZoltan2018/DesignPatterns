@@ -51,7 +51,7 @@ namespace _00Data
             var isShouldRetry = false;
             var retval = base.ShouldRetryOn(exception);
 
-            //var sqlexception = (SqlException)exception; //vajon igy is mukodik?
+            //var sqlException = (SqlException)exception; //Ezzel is jonak tunik
             var sqlException = exception as SqlException;
             if (sqlException != null)
             {
