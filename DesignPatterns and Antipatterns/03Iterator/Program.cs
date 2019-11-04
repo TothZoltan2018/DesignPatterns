@@ -25,8 +25,12 @@ namespace _03Iterator
             bejarhatoOsztaly.Add("Harmadik elem");
             bejarhatoOsztaly.Add("Negyedik elem");
             bejarhatoOsztaly.Add("Otodik elem");
+
+            //ez egy kis csalas, mert System.Object jon a ciklusvaltozoba
             foreach (var item in bejarhatoOsztaly)
             {
+                //de string eseten a ToString() mtodus eppen jot csinal,
+                //igy ez elsore nem szur szemet
                 Console.WriteLine($"ciklus: {item}");
             }
 
@@ -129,7 +133,7 @@ namespace _03Iterator
         /// Visszaallit mindent az elejere
         /// </summary>
         public void Reset()
-        {
+        {           
             position = -1;
             Console.WriteLine($"    {nameof(BejaroOsztaly)}.{nameof(Reset)}");
         }
@@ -141,7 +145,8 @@ namespace _03Iterator
 
         public VisszafeleBejaroOsztaly(List<string> list)
         {
-            this.list = list.OrderByDescending(x => x).ToList(); //Nevsor szerint forditott sorrendben rendezes            
+            list.OrderByDescending(x => x).ToList().Reverse(); //Nevsor szerint forditott sorrendben rendezes, utana az elemek indexe szerint visszafele                 
+            this.list = list;
         }
 
         /// <summary>
