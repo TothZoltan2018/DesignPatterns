@@ -39,9 +39,6 @@ namespace _04Iterator2
                     {
                         //Ez itt a foreach ciklus belseje      
                         Console.WriteLine(item.Uzenet);
-            Console.ReadLine();
-        }
-
                     }
                 } while (leszKovetkezo);
             }
@@ -52,6 +49,9 @@ namespace _04Iterator2
                     ((IDisposable)bejaro).Dispose();
                 }                
             }
+
+            Console.ReadLine();
+        }
     }
     class SajatOsztaly
     {
