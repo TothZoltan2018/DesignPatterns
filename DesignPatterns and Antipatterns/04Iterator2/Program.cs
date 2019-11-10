@@ -8,7 +8,7 @@ namespace _04Iterator2
     {
         static void Main(string[] args)
         {
-            var bejarhatoOsztaly = new BejarhatoOsztaly();
+            var bejarhatoOsztaly = new BejarhatoOsztaly<SajatOsztaly>();
             bejarhatoOsztaly.Add(new SajatOsztaly("Elso bejegyzes"));
             bejarhatoOsztaly.Add(new SajatOsztaly("Masodik bejegyzes"));
             bejarhatoOsztaly.Add(new SajatOsztaly("Harmadik bejegyzes"));
@@ -17,38 +17,32 @@ namespace _04Iterator2
             foreach (var item in bejarhatoOsztaly)
             {
                 Console.WriteLine(item.Uzenet);
-                //Ha tudom, hogy az item SajatOsztaly tipusu, csak akkor tudok castolas utan
-                //(elkerem a SajatOsztaly feluletet) a property-kre hivatkozni
-
-                //generikus IEnumarable eseten nincs szukseg a cast-ra
-                // if (((SajatOsztaly)item).Created.DayOfWeek == DayOfWeek.Friday)
-                //  {}
             }
             //Miutan a foreach veget er, megivja a Dispose() fgvt.
 
             //A foreach a kovetkezo mechanizmust hivja eletre:            
             //using (var bejaro = bejarhatoOsztaly.GetEnumerator())//a bejaro IDisposable, ezert using blokkban kell hasznalni
-            var bejaro = bejarhatoOsztaly.GetEnumerator();
-            try
-            {
-                var leszKovetkezo = true;
-                do
-                {
-                    leszKovetkezo = bejaro.MoveNext();
-                    var item = bejaro.Current;
-                    {
-                        //Ez itt a foreach ciklus belseje      
-                        Console.WriteLine(item.Uzenet);
-                    }
-                } while (leszKovetkezo);
-            }
-            finally
-            {
-                if (bejaro!=null)
-                {
-                    ((IDisposable)bejaro).Dispose();
-                }                
-            }
+            //var bejaro = bejarhatoOsztaly.GetEnumerator();
+            //try
+            //{
+            //    var leszKovetkezo = true;
+            //    do
+            //    {
+            //        leszKovetkezo = bejaro.MoveNext();
+            //        var item = bejaro.Current;
+            //        {
+            //            //Ez itt a foreach ciklus belseje      
+            //            Console.WriteLine(item.Uzenet);
+            //        }
+            //    } while (leszKovetkezo);
+            //}
+            //finally
+            //{
+            //    if (bejaro!=null)
+            //    {
+            //        ((IDisposable)bejaro).Dispose();
+            //    }                
+            //}
 
             Console.ReadLine();
         }
@@ -72,18 +66,18 @@ namespace _04Iterator2
         //}
     }
 
-    class BejarhatoOsztaly : IEnumerable<SajatOsztaly>
+    class BejarhatoOsztaly<T> : IEnumerable<T>
     {
-        List<SajatOsztaly> list = new List<SajatOsztaly>();
+        List<T> list = new List<T>();
 
-        internal void Add(SajatOsztaly sajatOsztaly)
+        internal void Add(T item)
         {
-            list.Add(sajatOsztaly);
+            list.Add(item);
         }
 
-        public IEnumerator<SajatOsztaly> GetEnumerator()
+        public IEnumerator<T> GetEnumerator()
         {
-            return new BejaroOsztaly(list);
+            return new BejaroOsztaly<T>(list);
         }
 
         IEnumerator IEnumerable.GetEnumerator()
@@ -92,17 +86,17 @@ namespace _04Iterator2
         }
     }
 
-    class BejaroOsztaly : IEnumerator<SajatOsztaly>
+    class BejaroOsztaly<T> : IEnumerator<T>
     {
-        private List<SajatOsztaly> list;
+        private List<T> list;
         private int position = -1;
 
-        public BejaroOsztaly(List<SajatOsztaly> list)
+        public BejaroOsztaly(List<T> list)
         {
             this.list = list;
         }
 
-        public SajatOsztaly Current
+        public T Current
         {
             get { return list[position]; }
         }
