@@ -15,7 +15,7 @@ namespace _06Observer
         {
             var f = new FelhasznaloiFelulet();
 
-            var n = new NanplozoModul();
+            var n = new NaplozoModul();
 
             //var b = new BetoltoProgram(f, n);
             var b = new BetoltoProgram();
@@ -30,33 +30,37 @@ namespace _06Observer
             b.Leiratkozas(n);
 
             Console.ReadLine();
-
         }
     }
 
     public interface IUzenet
     {
-        void Uzenet(int allapot);
+        void Uzenet(IAllapot allapot);
     }
 
-    public class NanplozoModul : IUzenet
+    public class NaplozoModul : IUzenet
     {
-        public void Uzenet(int allapot)
+        public void Uzenet(IAllapot allapot)
         {
-            Console.WriteLine($"NaplozoModul.Uzenet: {allapot}");
+            Console.WriteLine($"NaplozoModul.Uzenet: {allapot.Allapot}");
         }
     }
  
     public class FelhasznaloiFelulet : IUzenet
     {
-        public void Uzenet(int allapot)
+        public void Uzenet(IAllapot allapot)
         {
-            Console.WriteLine($"FelhasznaloiFelulet.Uzenet: {allapot}");
+            Console.WriteLine($"FelhasznaloiFelulet.Uzenet: {allapot.Allapot}");
             //le kene kerdezni, hogy mi a helyzet
         }
     }
 
-    class BetoltoProgram
+    public interface IAllapot 
+    {
+        int Allapot { get; }
+    }
+    
+    class BetoltoProgram : IAllapot
     {
         private List<IUzenet> megfigyelok = new List<IUzenet>();
 
@@ -113,7 +117,7 @@ namespace _06Observer
             this.allapot = allapot;
             foreach (var megfigyelo in megfigyelok)
             {
-                megfigyelo.Uzenet(allapot);
+                megfigyelo.Uzenet(this);
             }
         }
 

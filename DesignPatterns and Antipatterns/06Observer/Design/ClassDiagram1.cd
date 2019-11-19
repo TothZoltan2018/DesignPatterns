@@ -19,12 +19,13 @@
   <Class Name="_06Observer.BetoltoProgram">
     <Position X="1.25" Y="3.25" Width="2.25" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAACAEAEAAAAAAAAAAAAgAAAAAAAAAEAAAAAA=</HashCode>
+      <HashCode>AEAAAABAACAEAEAAAAAAAAAAAAgAAAAAAAAAEAAAAAA=</HashCode>
       <FileName>Program.cs</FileName>
     </TypeIdentifier>
     <ShowAsCollectionAssociation>
       <Field Name="megfigyelok" />
     </ShowAsCollectionAssociation>
+    <Lollipop Position="0.2" />
   </Class>
   <Interface Name="_06Observer.IUzenet">
     <Position X="6" Y="3.5" Width="1.5" />
