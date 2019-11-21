@@ -21,6 +21,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05Irerator3", "05Irerator3\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06Observer", "06Observer\06Observer.csproj", "{81E02F88-DFCB-4AD3-8E6E-ED8280DEF092}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07Observer2", "07Observer2\07Observer2.csproj", "{617C0785-2B81-4828-AAC5-48F9ABF9D267}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -63,6 +65,10 @@ Global
 		{81E02F88-DFCB-4AD3-8E6E-ED8280DEF092}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{81E02F88-DFCB-4AD3-8E6E-ED8280DEF092}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{81E02F88-DFCB-4AD3-8E6E-ED8280DEF092}.Release|Any CPU.Build.0 = Release|Any CPU
+		{617C0785-2B81-4828-AAC5-48F9ABF9D267}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{617C0785-2B81-4828-AAC5-48F9ABF9D267}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{617C0785-2B81-4828-AAC5-48F9ABF9D267}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{617C0785-2B81-4828-AAC5-48F9ABF9D267}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
