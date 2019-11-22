@@ -8,6 +8,14 @@ namespace _06Observer
 {
     /// <summary>
     /// Keszitsubk egy olyan programot, ami hosszan dolgozik, es idorol idore szol, hogy hol tart.
+    /// 
+    /// Megfigyelo minta megjegyzesek:
+    /// Amikor a megfigyelt ertesiti a megfigyeloket, akkor nem lehet tudni, hogy
+    /// mekkora folyamat indul el. Ez teljesitmenyproblemakhoz vezethet.
+    /// 
+    /// Ahhoz, hogy kideruljon, mi valtozott, kulon megoldas kell.
+    /// 
+    /// A torlest implementalni kell
     /// </summary>
     class Program
     {

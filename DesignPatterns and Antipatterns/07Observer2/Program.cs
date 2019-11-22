@@ -8,6 +8,9 @@ namespace _07Observer2
 {
     /// <summary>
     /// Ugyanaz, mint az elobb, csak a .Net IObserver es IObservable hasznalataval
+    /// 
+    /// Az adatcsere DTO-n keresztul megoldott, igy a megfigyelt el tudja
+    /// kuldeni az allapotvaltozasanak reszleteit.
     /// </summary>
     class Program
     {
@@ -26,7 +29,7 @@ namespace _07Observer2
                 {
                     b.Start();
                 }
-            }
+            }//Itt automatikusan meghivodik a Feliaratkozas.Dispose()
 
             Console.ReadLine();
         }
