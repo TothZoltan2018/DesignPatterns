@@ -22,12 +22,35 @@ namespace _09Bridge
                 Suject = "tesztuzenet",
                 Message = "Ez egy tesztuzenet, amit egy kuld a kettonek."
             };
-            
-            var service = new EmailService();
 
+            var service = new EmailService();
             service.Send(message);
+            Console.WriteLine();
+            
+            var serviceMsx = new EmailServiceWithExchange();
+            serviceMsx.Host = "1.1.1.1";
+            serviceMsx.UserName = "MSXUser";
+            serviceMsx.Password = "MSXPassword";
+            serviceMsx.Send(message);
+            Console.WriteLine();
+
+            var serviceSG = new EmailServiceWithSendGrid();
+            serviceSG.HostUrl = "https://sendgrid.service.com";
+            serviceSG.ApiKey = "SG-APIKEY";
+            serviceSG.Send(message);
+            Console.WriteLine();
+
+            var serviceM = new EmailServiceWithMandrill();
+            serviceM.HostUrl = "https://api.mandrill.com";
+            serviceM.ClientSecret = "MANDRILL-SECRET";
+            serviceM.ClientKey = "MANDRILL-KEY";
+            serviceM.Send(message);
+            Console.WriteLine();
+
+
+
 
             Console.ReadLine();
         }
-    }
+    } 
 }
