@@ -2,6 +2,9 @@
 
 namespace _10Bridge1
 {
+    /// <summary>
+    /// Concrete Implementor
+    /// </summary>
     public class SendWithSendGrid : ISendWith
     {
         public string HostUrl { get; set; }
