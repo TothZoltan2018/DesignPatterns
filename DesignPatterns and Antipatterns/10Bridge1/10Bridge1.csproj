@@ -47,6 +47,7 @@
     <Compile Include="EmailMessage.cs" />
     <Compile Include="EmailService.cs" />
     <Compile Include="EmailServiceWithLogger.cs" />
+    <Compile Include="EmailServiceWithProxy.cs" />
     <Compile Include="ISendWith.cs" />
     <Compile Include="Person.cs" />
     <Compile Include="PersonRepository.cs" />

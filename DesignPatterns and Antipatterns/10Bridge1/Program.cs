@@ -40,17 +40,32 @@ namespace _10Bridge1
             var sendWith = new SendWith(); //strategia
             var service = new EmailService(sendWith); //Fogadja a strategiat (a Send metodust) es meghivja
 
+            //----------------------------------######## DEKORATOR #######---------------------------------------------------------------------
             //keszitunk egy olyan szervizt, ami naplot is keszit
             //Ha a szerviz kodjat mar valamiert nem modosithatjuk (pl. regi kod kiegeszitese, vagy nem modosithato a forraskod),
-            //akkor ezt ######## dekorator ####### mintaval tudjuk megtenni
+            //akkor ezt ######## DEKORATOR ####### mintaval tudjuk megtenni
             //Keszitunk egy burkoloosztalyt, es dependency injection-el atadjuk neki az eredeti osztalyt. 
 
             //Akkor mukodik, ha a EmailServiceWithLogger feluletet tudom hasznalni.
             //Vagy, ha a dekoralando fgv (Send) virtualis, es overridolni tudom a dekorator osztalyban.             
             //EmailService serviceWithLogger = new EmailServiceWithLogger(service, sendWith);// --> Igy az ososztaly Send fuggvenyet fogja hivni, ha nincs virt/overr.
             var serviceWithLogger = new EmailServiceWithLogger(service, sendWith);
-            
 
+            //----------------------------------######### PROXY ############---------------------------------------------------------------------
+            //A proxy osztaly feluletenek hasznalatat ki lehet kenyszeriteni
+            //A Decorator-hoz hasonloan ez is egy wrapper (beburkoljuk es meghivjuk az eredeti osztalyt, es annak mukodeset kiegeszitjuk)
+            var serviceWithProxy = new EmailServiceWithProxy(service, sendWith);
+
+            //A proxy osztalyt akkor hasznaljuk, ha pl.:
+            // - a fejleszteskor nem all rendelkezesre a vegleges megvalositas
+            // - halozaton keresztul kapcsolodunk, es szeretnenk tesztet irni,
+            // - jogosultsagot implementalni,
+            // - cache-t implementalni
+
+            // ----------------------------------######### FACADE ############---------------------------------------------------------------------
+            //Amikor az eredeti osztaly felulete tul bonzolult, akkor helyette egy konnyebben felhasznalhato feluletet adunk. Pl.:
+            // - Sok, komolyabb (sok lepesbol allo) workflow-t implementalo WebAPI as sajat klienskonyvtarat. Pl.:
+            //        - PayPal fizetes
             var message = new EmailMessage
             {
                 From = officeAddress,
