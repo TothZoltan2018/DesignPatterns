@@ -22,5 +22,13 @@ namespace _10Bridge1
                 Console.WriteLine($"Uzenet: {message.Message}");
             }
         }
+
+        public static SendWithSendGrid SendWithSendGridFactory()
+        {
+            var strategySG = new SendWithSendGrid();
+            strategySG.HostUrl = "https://sendgrid.service.com";
+            strategySG.ApiKey = "SG-APIKEY";
+            return strategySG;
+        }        
     }
 }

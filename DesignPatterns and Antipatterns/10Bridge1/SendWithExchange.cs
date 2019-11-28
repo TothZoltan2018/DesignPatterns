@@ -20,5 +20,14 @@ namespace _10Bridge1
             Console.WriteLine($"Targy: {message.Subject}");
             Console.WriteLine($"Uzenet: {message.Message}");
         }
+
+        public static SendWithExchange SendWithExchangeFactory()
+        {
+            var strategyMsx = new SendWithExchange();
+            strategyMsx.Host = "1.1.1.1";
+            strategyMsx.UserName = "MSXUser";
+            strategyMsx.Password = "MSXPassword";
+            return strategyMsx;
+        }
     }
 }

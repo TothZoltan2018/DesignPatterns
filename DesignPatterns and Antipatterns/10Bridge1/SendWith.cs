@@ -15,5 +15,10 @@ namespace _10Bridge1
             Console.WriteLine($"Targy: {message.Subject}");
             Console.WriteLine($"Uzenet: {message.Message}");
         }
+
+        public static SendWith SendWithFactory()
+        {
+            return new SendWith();
+        }
     }
 }

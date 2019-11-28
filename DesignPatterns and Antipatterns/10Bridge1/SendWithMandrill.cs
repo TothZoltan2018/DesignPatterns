@@ -22,5 +22,14 @@ namespace _10Bridge1
             Console.WriteLine($"Targy: {message.Subject}");
             Console.WriteLine($"Uzenet: {message.Message}");
         }
+
+        public static SendWithMandrill SendWithMandrillFactory()
+        {
+            var strategyM = new SendWithMandrill();
+            strategyM.HostUrl = "https://api.mandrill.com";
+            strategyM.ClientSecret = "MANDRILL-SECRET";
+            strategyM.ClientKey = "MANDRILL-KEY";
+            return strategyM;
+        }
     }
 }

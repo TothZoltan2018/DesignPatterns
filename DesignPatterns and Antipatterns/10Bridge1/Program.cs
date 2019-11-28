@@ -37,7 +37,7 @@ namespace _10Bridge1
 
             var person = repo.GetBirthdayPersons();
 
-            var sendWith = new SendWith(); //strategia
+            var sendWith = SendWith.SendWithFactory(); //statikus fgv-t keszitettunk
             var service = new EmailService(sendWith); //Fogadja a strategiat (a Send metodust) es meghivja
 
             //----------------------------------######## DEKORATOR #######---------------------------------------------------------------------
@@ -66,6 +66,7 @@ namespace _10Bridge1
             //Amikor az eredeti osztaly felulete tul bonzolult, akkor helyette egy konnyebben felhasznalhato feluletet adunk. Pl.:
             // - Sok, komolyabb (sok lepesbol allo) workflow-t implementalo WebAPI as sajat klienskonyvtarat. Pl.:
             //        - PayPal fizetes
+            //---------------------------------------------------------------------------------------------------------------------------------------
             var message = new EmailMessage
             {
                 From = officeAddress,
@@ -86,13 +87,12 @@ namespace _10Bridge1
             {
                 From = new EmailAddress { Address = "egy@teszt.hu", Display = "az elso cim" },
                 To = new EmailAddress { Address = "ketto@teszt.hu", Display = "a masodik cim " },
-                Subject = "Udvozlet",
-                Message = "Boldog szuletesnapot!"
+                Subject = "tesztuzenet",
+                Message = "Ez egy tesztuzenet, amit egy kuld a kettonek."
             };
-
             ///////////////////////////////////////////
             //Concrete Implementor
-            var strategy = new SendWith();
+            SendWith strategy = SendWith.SendWithFactory();
 
             //abstraction
             var service = new EmailService(strategy);
@@ -101,35 +101,29 @@ namespace _10Bridge1
             ///////////////////////////////////////////
 
             //Concrete Implementor
-            var strategyMsx = new SendWithExchange();
-            strategyMsx.Host = "1.1.1.1";
-            strategyMsx.UserName = "MSXUser";
-            strategyMsx.Password = "MSXPassword";
+            SendWithExchange strategyMsx = SendWithExchange.SendWithExchangeFactory();
 
             //Nem kell uj service tipust peldanyositani!
             service = new EmailService(strategyMsx);
             service.Send(message);
             Console.WriteLine();
-
             ///////////////////////////////////////////
+
             //Concrete Implementor
-            var strategySG = new SendWithSendGrid();
-            strategySG.HostUrl = "https://sendgrid.service.com";
-            strategySG.ApiKey = "SG-APIKEY";
+            SendWithSendGrid strategySG = SendWithSendGrid.SendWithSendGridFactory();
 
             service = new EmailService(strategySG);
             service.Send(message);
             Console.WriteLine();
             ///////////////////////////////////////////
+
             //Concrete Implementor
-            var strategyM = new SendWithMandrill();
-            strategyM.HostUrl = "https://api.mandrill.com";
-            strategyM.ClientSecret = "MANDRILL-SECRET";
-            strategyM.ClientKey = "MANDRILL-KEY";
+            SendWithMandrill strategyM = SendWithMandrill.SendWithMandrillFactory();
 
             service = new EmailService(strategyM);
             service.Send(message);
             Console.WriteLine();
         }
+        
     }
 }
