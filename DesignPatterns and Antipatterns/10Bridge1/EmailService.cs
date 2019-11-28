@@ -1,7 +1,9 @@
 ﻿using System;
 
 namespace _10Bridge1
-{
+{/// <summary>
+/// Fogadja a strategiat (a Send metodust es meghivja)
+/// </summary>
     public class EmailService
     {
         private ISendWith strategy;

@@ -12,7 +12,7 @@ namespace _10Bridge1
             Console.WriteLine("A kovetkezo uzenetet elkuldtuk a teszt szervizbol:");
             Console.WriteLine($"Kuldo: {message.From.Address}");
             Console.WriteLine($"Cimzett: {message.To.Address}");
-            Console.WriteLine($"Targy: {message.Suject}");
+            Console.WriteLine($"Targy: {message.Subject}");
             Console.WriteLine($"Uzenet: {message.Message}");
         }
     }

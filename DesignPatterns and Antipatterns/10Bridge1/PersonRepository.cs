@@ -26,7 +26,7 @@ namespace _10Bridge1
             data.Add(
                 new Person
                 {
-                    Name = "HArmadik kollega",
+                    Name = "Harmadik kollega",
                     EmailAddress = new EmailAddress { Address = "kollega3@hivatali.hu", Display = "Ceges email" },
                 }
             );

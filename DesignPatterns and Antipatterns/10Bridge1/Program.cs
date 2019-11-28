@@ -38,17 +38,29 @@ namespace _10Bridge1
             var person = repo.GetBirthdayPersons();
 
             var sendWith = new SendWith(); //strategia
-            var service = new EmailService(sendWith);
+            var service = new EmailService(sendWith); //Fogadja a strategiat (a Send metodust) es meghivja
+
+            //keszitunk egy olyan szervizt, ami naplot is keszit
+            //Ha a szerviz kodjat mar valamiert nem modosithatjuk (pl. regi kod kiegeszitese, vagy nem modosithato a forraskod),
+            //akkor ezt ######## dekorator ####### mintaval tudjuk megtenni
+            //Keszitunk egy burkoloosztalyt, es dependency injection-el atadjuk neki az eredeti osztalyt. 
+
+            //Akkor mukodik, ha a EmailServiceWithLogger feluletet tudom hasznalni.
+            //Vagy, ha a dekoralando fgv (Send) virtualis, es overridolni tudom a dekorator osztalyban.             
+            //EmailService serviceWithLogger = new EmailServiceWithLogger(service, sendWith);// --> Igy az ososztaly Send fuggvenyet fogja hivni, ha nincs virt/overr.
+            var serviceWithLogger = new EmailServiceWithLogger(service, sendWith);
+            
 
             var message = new EmailMessage
             {
                 From = officeAddress,
                 To = person.EmailAddress,
-                Suject = "tesztuzenet",
+                Subject = "tesztuzenet",
                 Message = "Ez egy tesztuzenet, amit egy kuld a kettonek."
             };
 
-            service.Send(message);
+            //service.Send(message);
+            serviceWithLogger.Send(message);
 
             Console.ReadLine();
         }
@@ -59,7 +71,7 @@ namespace _10Bridge1
             {
                 From = new EmailAddress { Address = "egy@teszt.hu", Display = "az elso cim" },
                 To = new EmailAddress { Address = "ketto@teszt.hu", Display = "a masodik cim " },
-                Suject = "Udvozlet",
+                Subject = "Udvozlet",
                 Message = "Boldog szuletesnapot!"
             };
 

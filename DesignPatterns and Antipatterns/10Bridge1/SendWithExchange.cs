@@ -17,7 +17,7 @@ namespace _10Bridge1
             Console.WriteLine($"Host: { Host }, UserName: { UserName }");
             Console.WriteLine($"Kuldo: {message.From.Address}");
             Console.WriteLine($"Cimzett: {message.To.Address}");
-            Console.WriteLine($"Targy: {message.Suject}");
+            Console.WriteLine($"Targy: {message.Subject}");
             Console.WriteLine($"Uzenet: {message.Message}");
         }
     }
