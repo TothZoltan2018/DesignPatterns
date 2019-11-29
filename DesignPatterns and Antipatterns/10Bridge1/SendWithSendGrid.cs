@@ -5,12 +5,12 @@ namespace _10Bridge1
     /// <summary>
     /// Concrete Implementor
     /// </summary>
-    public class SendWithSendGrid : ISendWith
+    public class SendWithSendGrid : AbstractSendWith
     {
         public string HostUrl { get; set; }
         public string ApiKey { get; set; }
 
-        public void Send(EmailMessage message)
+        override public void Send(EmailMessage message)
         {
             {
                 Console.WriteLine("A kovetkezo uzenetet elkuldtuk a SendGrid szervizbol API-val:");
@@ -23,12 +23,10 @@ namespace _10Bridge1
             }
         }
 
-        public static SendWithSendGrid SendWithSendGridFactory()
-        {
-            var strategySG = new SendWithSendGrid();
-            strategySG.HostUrl = "https://sendgrid.service.com";
-            strategySG.ApiKey = "SG-APIKEY";
-            return strategySG;
+        protected override void Setup()
+        {            
+            HostUrl = "https://sendgrid.service.com";
+            ApiKey = "SG-APIKEY";         
         }        
     }
 }

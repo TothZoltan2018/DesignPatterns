@@ -5,9 +5,9 @@ namespace _10Bridge1
     /// <summary>
     /// Concrete Implementor
     /// </summary>
-    public class SendWith : ISendWith
+    public class SendWith : AbstractSendWith
     {
-        public void Send(EmailMessage message)
+        override public void Send(EmailMessage message)
         {
             Console.WriteLine("A kovetkezo uzenetet elkuldtuk a teszt szervizbol:");
             Console.WriteLine($"Kuldo: {message.From.Address}");
@@ -16,9 +16,8 @@ namespace _10Bridge1
             Console.WriteLine($"Uzenet: {message.Message}");
         }
 
-        public static SendWith SendWithFactory()
+        protected override void Setup()
         {
-            return new SendWith();
         }
     }
 }

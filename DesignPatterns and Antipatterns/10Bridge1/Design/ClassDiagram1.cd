@@ -1,16 +1,16 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="_10Bridge1.EmailAddress">
-    <Position X="11" Y="0.5" Width="1.5" />
+    <Position X="2.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAQAAAAAAAAACAAAAAAAAAAA=</HashCode>
       <FileName>EmailAddress.cs</FileName>
     </TypeIdentifier>
   </Class>
   <Class Name="_10Bridge1.EmailMessage">
-    <Position X="8.5" Y="0.5" Width="1.5" />
+    <Position X="5.5" Y="4.75" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AgAAAAAAAAAAAAAAAAAEAAAAAAAIAAAAAAAAIAAAAAA=</HashCode>
+      <HashCode>AgAAAAAAAAAAAAAAAIAAAAAAAAAIAAAAAAAAIAAAAAA=</HashCode>
       <FileName>EmailMessage.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
@@ -19,7 +19,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="_10Bridge1.EmailService">
-    <Position X="6" Y="0.5" Width="1.5" />
+    <Position X="5.5" Y="0.75" Width="1.5" />
     <TypeIdentifier>
       <HashCode>EAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>EmailService.cs</FileName>
@@ -29,43 +29,46 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="_10Bridge1.SendWith" BaseTypeListCollapsed="true">
-    <Position X="2.75" Y="4.5" Width="1.5" />
+    <Position X="5" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAACAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>SendWith.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="_10Bridge1.SendWithExchange" BaseTypeListCollapsed="true">
-    <Position X="7" Y="4.5" Width="1.75" />
+    <Position X="9.75" Y="3" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAACAACAQAAAAAAAAA=</HashCode>
+      <HashCode>AAAAAAAACAAAAAAAAEAAAAAAAAAACAACAQAAAAAAAAA=</HashCode>
       <FileName>SendWithExchange.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="_10Bridge1.SendWithMandrill" BaseTypeListCollapsed="true">
-    <Position X="9.25" Y="4.5" Width="1.5" />
+    <Position X="12.25" Y="3" Width="1.5" />
     <TypeIdentifier>
-      <HashCode>AAABAAAABAAAAAAAAEAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAABAAAADAAAAAAAAEAAAAAAAAgAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>SendWithMandrill.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
   <Class Name="_10Bridge1.SendWithSendGrid" BaseTypeListCollapsed="true">
-    <Position X="4.75" Y="4.5" Width="1.75" />
+    <Position X="7.25" Y="3" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAABAAAAAAAAAAAAAEAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <HashCode>AAABAAAACAAAAAAAAEAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
       <FileName>SendWithSendGrid.cs</FileName>
     </TypeIdentifier>
-    <Lollipop Position="0.2" />
   </Class>
-  <Interface Name="_10Bridge1.ISendWith">
-    <Position X="3.5" Y="0.5" Width="1.5" />
+  <Class Name="_10Bridge1.AbstractSendWith">
+    <Position X="8.5" Y="0.5" Width="1.75" />
     <TypeIdentifier>
-      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
-      <FileName>ISendWith.cs</FileName>
+      <HashCode>AAAAAAAACAAAAAAAIEAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>AbstractSendWith.cs</FileName>
     </TypeIdentifier>
-  </Interface>
+  </Class>
+  <Enum Name="_10Bridge1.SendWithTypes" Collapsed="true">
+    <Position X="12" Y="0.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAAACAAAAABACAAAAAAA=</HashCode>
+      <FileName>AbstractSendWith.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
   <Font Name="Segoe UI" Size="9" />
 </ClassDiagram>

@@ -5,13 +5,13 @@ namespace _10Bridge1
     /// <summary>
     /// Concrete Implementor
     /// </summary>
-    internal class SendWithMandrill : ISendWith
+    internal class SendWithMandrill : AbstractSendWith
     {
         public string HostUrl { get; set; }
         public string ClientSecret { get; set; }
         public string ClientKey { get; set; }
 
-        public void Send(EmailMessage message)
+        override public void Send(EmailMessage message)
         {
             Console.WriteLine("A kovetkezo uzenetet elkuldtuk a Mandrill szervizbol API-val:");
             Console.WriteLine($"HostUrl: { HostUrl }");
@@ -23,13 +23,11 @@ namespace _10Bridge1
             Console.WriteLine($"Uzenet: {message.Message}");
         }
 
-        public static SendWithMandrill SendWithMandrillFactory()
-        {
-            var strategyM = new SendWithMandrill();
-            strategyM.HostUrl = "https://api.mandrill.com";
-            strategyM.ClientSecret = "MANDRILL-SECRET";
-            strategyM.ClientKey = "MANDRILL-KEY";
-            return strategyM;
+        protected override void Setup()
+        {            
+            HostUrl = "https://api.mandrill.com";
+            ClientSecret = "MANDRILL-SECRET";
+            ClientKey = "MANDRILL-KEY";
         }
     }
 }

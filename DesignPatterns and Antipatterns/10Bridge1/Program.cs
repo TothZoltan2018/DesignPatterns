@@ -20,8 +20,16 @@ namespace _10Bridge1
         static void Main(string[] args)
         {
             //A hid  minta bevezetesehez es tesztjehez
-            //TestBridge1();
+            TestBridge1();
 
+            //A decorator/proxy/facade
+            //TestBridgeDecoratorAndProxy();
+
+            Console.ReadLine();
+        }
+
+        private static void TestBridgeDecoratorAndProxy()
+        {
             var officeAddress = new EmailAddress { Address = "iroda@hivatali.hu", Display = "Az iroda email cime" };
 
             //Elore tudom, hogy hidat akarok hasznalni,
@@ -37,7 +45,9 @@ namespace _10Bridge1
 
             var person = repo.GetBirthdayPersons();
 
-            var sendWith = SendWith.SendWithFactory(); //statikus fgv-t keszitettunk
+            //var sendWith = AbstractSendWith.Factory(SendWithTypes.SendWith); //statikus fgv-t keszitettunk
+            var sendWith = AbstractSendWith.Factory<SendWith>();
+
             var service = new EmailService(sendWith); //Fogadja a strategiat (a Send metodust) es meghivja
 
             //----------------------------------######## DEKORATOR #######---------------------------------------------------------------------
@@ -77,8 +87,6 @@ namespace _10Bridge1
 
             //service.Send(message);
             serviceWithLogger.Send(message);
-
-            Console.ReadLine();
         }
 
         private static void TestBridge1()
@@ -92,7 +100,8 @@ namespace _10Bridge1
             };
             ///////////////////////////////////////////
             //Concrete Implementor
-            SendWith strategy = SendWith.SendWithFactory();
+            //var strategy = AbstractSendWith.Factory(SendWithTypes.SendWith);
+            var strategy = AbstractSendWith.Factory<SendWith>(); //statikus fgv-t keszitettunk
 
             //abstraction
             var service = new EmailService(strategy);
@@ -101,7 +110,8 @@ namespace _10Bridge1
             ///////////////////////////////////////////
 
             //Concrete Implementor
-            SendWithExchange strategyMsx = SendWithExchange.SendWithExchangeFactory();
+            //var strategyMsx = AbstractSendWith.Factory(SendWithTypes.SendWithExchange);
+            var strategyMsx = AbstractSendWith.Factory<SendWithExchange>();
 
             //Nem kell uj service tipust peldanyositani!
             service = new EmailService(strategyMsx);
@@ -110,7 +120,8 @@ namespace _10Bridge1
             ///////////////////////////////////////////
 
             //Concrete Implementor
-            SendWithSendGrid strategySG = SendWithSendGrid.SendWithSendGridFactory();
+            //var strategySG = AbstractSendWith.Factory(SendWithTypes.SendWithSendGrid);
+            var strategySG = AbstractSendWith.Factory<SendWithSendGrid>();
 
             service = new EmailService(strategySG);
             service.Send(message);
@@ -118,7 +129,8 @@ namespace _10Bridge1
             ///////////////////////////////////////////
 
             //Concrete Implementor
-            SendWithMandrill strategyM = SendWithMandrill.SendWithMandrillFactory();
+            //var strategyM = AbstractSendWith.Factory(SendWithTypes.SendWithMandrill);
+            var strategyM = AbstractSendWith.Factory<SendWithMandrill>();
 
             service = new EmailService(strategyM);
             service.Send(message);
@@ -127,3 +139,4 @@ namespace _10Bridge1
         
     }
 }
+

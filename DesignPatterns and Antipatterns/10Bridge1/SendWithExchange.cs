@@ -5,13 +5,13 @@ namespace _10Bridge1
     /// <summary>
     /// Concrete Implementor
     /// </summary>
-    public class SendWithExchange : ISendWith
+    public class SendWithExchange : AbstractSendWith
     {
         public string Host { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
 
-        public void Send(EmailMessage message)
+        override public void Send(EmailMessage message)
         {
             Console.WriteLine("A kovetkezo uzenetet elkuldtuk az Exchange szervizbol SMTP-vel:");
             Console.WriteLine($"Host: { Host }, UserName: { UserName }");
@@ -21,13 +21,11 @@ namespace _10Bridge1
             Console.WriteLine($"Uzenet: {message.Message}");
         }
 
-        public static SendWithExchange SendWithExchangeFactory()
-        {
-            var strategyMsx = new SendWithExchange();
-            strategyMsx.Host = "1.1.1.1";
-            strategyMsx.UserName = "MSXUser";
-            strategyMsx.Password = "MSXPassword";
-            return strategyMsx;
+        protected override void Setup()
+        {            
+            Host = "1.1.1.1";
+            UserName = "MSXUser";
+            Password = "MSXPassword";
         }
     }
 }

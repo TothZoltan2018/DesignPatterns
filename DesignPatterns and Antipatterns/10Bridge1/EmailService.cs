@@ -2,13 +2,13 @@
 
 namespace _10Bridge1
 {/// <summary>
-/// Fogadja a strategiat (a Send metodust es meghivja)
+/// Fogadja a strategiat (a Send metodust, es meghivja)
 /// </summary>
     public class EmailService
     {
-        private ISendWith strategy;
+        private AbstractSendWith strategy;
 
-        public EmailService(ISendWith strategy)
+        public EmailService(AbstractSendWith strategy)
         {
             this.strategy = strategy;
         }

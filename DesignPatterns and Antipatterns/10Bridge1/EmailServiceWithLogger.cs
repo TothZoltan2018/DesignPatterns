@@ -15,7 +15,7 @@
         //private ISendWith sendWith;
 
         //Parameterkent fogadjuk az ososztalyat
-        public EmailServiceWithLogger(EmailService service, ISendWith sendWith) : base(sendWith)
+        public EmailServiceWithLogger(EmailService service, AbstractSendWith sendWith) : base(sendWith)
         {
             this.service = service;
             //this.sendWith = sendWith; //ez nem kell, mert a sendWith-et atadtuk a bazisosztalynak
