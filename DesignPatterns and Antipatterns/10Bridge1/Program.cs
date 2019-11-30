@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Ninject;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -17,25 +18,45 @@ namespace _10Bridge1
     /// </summary>
     class Program
     {
+        private static StandardKernel kernel;
+
         static void Main(string[] args)
         {
             //A hid  minta bevezetesehez es tesztjehez
             TestBridge1();
 
+            //Fel kell parameterezni a Ninject-et:
+            kernel = new StandardKernel(); //A Ninject osztalya
+            kernel.Bind<IPersonRepository>()
+                //.To<PersonRepositoryTestData>() //Igy lehet valtani, hogy melyik repo-t hasznaljuk
+                .To<PersonRepositorySimpleData>() //Igy lehet valtani, hogy melyik repo-t hasznaljuk
+
+                .InSingletonScope();//Csak egy peldanyban letezhet
+
+            Console.WriteLine("\n############################         ##################################\n");
             //A decorator/proxy/facade
-            //TestBridgeDecoratorAndProxy();
+            TestBridgeDecoratorAndProxy();
 
             Console.ReadLine();
         }
 
         private static void TestBridgeDecoratorAndProxy()
         {
-            var officeAddress = new EmailAddress { Address = "iroda@hivatali.hu", Display = "Az iroda email cime" };
+            var officeAddress = EmailAddressFactory.GetNewAddress("iroda@hivatali.hu", "Az iroda email cime" );
 
             //Elore tudom, hogy hidat akarok hasznalni,
             //levalasztom a konkret megvalositast a hasznalattol
             //ez az adatok tarolasanal a repository minta
-            var repo = new PersonRepository();
+
+            //E HELYETT
+            //var repo = new PersonRepository();
+
+            //EZ LESZ: Repo peldanyositasa DI (Dependency Injection) frameworkkel
+            //https://www.hanselman.com/blog/ListOfNETDependencyInjectionContainersIOC.aspx
+
+            //Ninject-et hasznalunk: http://www.ninject.org
+            var repo = kernel.Get<IPersonRepository>();
+
 
             //Ezek csak peldak; ilyeneket lehetne csinalni egy repoban
             //var person = repo.Get(1); 
@@ -77,13 +98,11 @@ namespace _10Bridge1
             // - Sok, komolyabb (sok lepesbol allo) workflow-t implementalo WebAPI as sajat klienskonyvtarat. Pl.:
             //        - PayPal fizetes
             //---------------------------------------------------------------------------------------------------------------------------------------
-            var message = new EmailMessage
-            {
-                From = officeAddress,
-                To = person.EmailAddress,
-                Subject = "tesztuzenet",
-                Message = "Ez egy tesztuzenet, amit egy kuld a kettonek."
-            };
+            var message = EmailMessage.Factory(            
+                officeAddress,
+                person.EmailAddress,
+                "Udvozlet",
+                "Boldog szuletesnapot!");
 
             //service.Send(message);
             serviceWithLogger.Send(message);
@@ -91,14 +110,13 @@ namespace _10Bridge1
 
         private static void TestBridge1()
         {
-            var message = new EmailMessage
-            {
-                From = new EmailAddress { Address = "egy@teszt.hu", Display = "az elso cim" },
-                To = new EmailAddress { Address = "ketto@teszt.hu", Display = "a masodik cim " },
-                Subject = "tesztuzenet",
-                Message = "Ez egy tesztuzenet, amit egy kuld a kettonek."
-            };
+            EmailMessage message = EmailMessage.Factory(
+                from: EmailAddressFactory.GetNewAddress(address: "egy@teszt.hu", display: "az elso cim"),
+                to: EmailAddressFactory.GetNewAddress(address: "ketto@teszt.hu", display: "a masodik cim"),
+                subject: "tesztuzenet",
+                message: "Ez egy tesztuzenet, amit egy kuld a kettonek.");
             ///////////////////////////////////////////
+            
             //Concrete Implementor
             //var strategy = AbstractSendWith.Factory(SendWithTypes.SendWith);
             var strategy = AbstractSendWith.Factory<SendWith>(); //statikus fgv-t keszitettunk
