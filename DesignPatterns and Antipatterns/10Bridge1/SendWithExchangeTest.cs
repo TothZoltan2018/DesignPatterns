@@ -1,16 +1,15 @@
 ﻿using System;
-using System.Configuration;
 
 namespace _10Bridge1
 {
     /// <summary>
     /// Concrete Implementor
     /// </summary>
-    public class SendWithExchange : AbstractSendWith
+    public class SendWithExchangeTest : SendWithExchange //AbstractSendWith
     {
-        public string Host { get; set; }
-        public string UserName { get; set; }
-        public string Password { get; set; }
+        //public string Host { get; set; }
+        //public string UserName { get; set; }
+        //public string Password { get; set; }
 
         override public void Send(EmailMessage message)
         {
@@ -24,9 +23,9 @@ namespace _10Bridge1
 
         protected override void Setup()
         {            
-            Host = ConfigurationManager.AppSettings[MagicValues.AppSettingsMsxHost];
-            UserName = ConfigurationManager.AppSettings[MagicValues.AppSettingsMsxUserName];
-            Password = ConfigurationManager.AppSettings[MagicValues.AppSettingsMsxPassword];
+            Host = "1.1.1.1";
+            UserName = "MSXUser";
+            Password = "MSXPassword";
         }
     }
 }

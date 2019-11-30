@@ -32,6 +32,16 @@ namespace _10Bridge1
             //var tmp = new T();
             //tmp.Setup();
 
+            //Mivel egy helyen peldanyositunk, ezert
+            //tudjuk parameterezni a peldanyositast
+            //Debughoz a felparameterezett Test valtozat, 
+            //Release-hez a parametereket az appconfig-bol szedo lesz kivalasztva
+#if DEBUG
+            if (typeof(T) == typeof(SendWithExchange))
+            {
+                return (T)(AbstractSendWith)(new SendWithExchangeTest());
+            }
+#endif
             return new T();
         }
 
@@ -55,7 +65,7 @@ namespace _10Bridge1
                     return new SendWithSendGrid();
                 case SendWithTypes.SendWithExchange:
                     //Ugyanaz, mint eggyel feljebb
-                    return new SendWithExchange();
+                    return new SendWithExchangeTest();
                 case SendWithTypes.SendWithMandrill:
                     //Ugyanaz, mint eggyel feljebb
                     return new SendWithMandrill();
