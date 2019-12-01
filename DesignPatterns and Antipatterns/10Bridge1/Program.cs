@@ -23,7 +23,7 @@ namespace _10Bridge1
         static void Main(string[] args)
         {
             //A hid  minta bevezetesehez es tesztjehez
-            TestBridge1();
+            //TestBridge1();
 
             //Fel kell parameterezni a Ninject-et:
             kernel = new StandardKernel(); //A Ninject osztalya
@@ -33,16 +33,26 @@ namespace _10Bridge1
 
                 .InSingletonScope();//Csak egy peldanyban letezhet
 
-            Console.WriteLine("\n############################         ##################################\n");
+            //Console.WriteLine("\n############################         ##################################\n");
             //A decorator/proxy/facade
-            TestBridgeDecoratorAndProxy();
+            //TestBridgeDecoratorAndProxy();
+
+            //plugin, ami elkuldi majd a leveleket:
+            var send = AbstractSendWith.Factory<SendWithExchange>();
+            var service = new EmailService(send);
+            var repo = kernel.Get<IPersonRepository>();
+            var template = new Templating();            
+ 
+            var msgService = new MessageService(service, repo, template);
+            msgService.Run();
+
 
             Console.ReadLine();
         }
 
         private static void TestBridgeDecoratorAndProxy()
         {
-            var officeAddress = EmailAddressFactory.GetNewAddress("iroda@hivatali.hu", "Az iroda email cime" );
+            var officeAddress = EmailAddressFactory.GetOfficeAddress();
 
             //Elore tudom, hogy hidat akarok hasznalni,
             //levalasztom a konkret megvalositast a hasznalattol

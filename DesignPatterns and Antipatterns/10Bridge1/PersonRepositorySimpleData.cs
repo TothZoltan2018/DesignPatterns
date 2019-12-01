@@ -16,5 +16,16 @@ namespace _10Bridge1
                 EmailAddress = new EmailAddress { Address = "kollegaSimpleRepo@hivatali.hu", Display = "Ceges email" }
             };
         }
+
+        public List<Person> GetPersonForMessages()
+        {
+            return new List<Person>(new Person[] {
+                new Person
+                {
+                    Name = "Kollega a 'Simple' repo-bol",
+                    EmailAddress = new EmailAddress { Address = "kollegaSimpleRepo@hivatali.hu", Display = "Ceges email" }
+                }
+            });
+        }
     }
 }

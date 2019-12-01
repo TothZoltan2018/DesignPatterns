@@ -41,5 +41,10 @@ namespace _10Bridge1
         {
             throw new NotImplementedException();
         }
+
+        public List<Person> GetPersonForMessages()
+        {
+            return data;
+        }
     }
 }
