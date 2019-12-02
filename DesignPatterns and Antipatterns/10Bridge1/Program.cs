@@ -38,14 +38,26 @@ namespace _10Bridge1
             //TestBridgeDecoratorAndProxy();
 
             //plugin, ami elkuldi majd a leveleket:
-            var send = AbstractSendWith.Factory<SendWithExchange>();
-            var service = new EmailService(send);
-            var repo = kernel.Get<IPersonRepository>();
-            var template = new Templating();            
+            //var send = AbstractSendWith.Factory<SendWithExchange>();
+            //var service = new EmailService(send);
+            //var repo = kernel.Get<IPersonRepository>();
+            //var template = new Templating();            
  
-            var msgService = new MessageService(service, repo, template);
+            //var msgService = new MessageService(service, repo, template);
+
+            //A fenitek helyett a letrehozasokat becsomagoljuk egy specialis strategiaba, majd
+            //a strategiapeldanyt atadjuk a szerviznek hasznalatra.
+
+            var birthdayMessageFactoryWithExchange = new BirthdayMessageFactoryWithExchange();
+            var msgService = new MessageService(birthdayMessageFactoryWithExchange);
+
             msgService.Run();
 
+            Console.WriteLine("\n############################         ##################################\n");
+            var welcomeMessageFactoryWithSendGrid = new WelcomeMessageFactoryWithSendGrid();
+            msgService = new MessageService(welcomeMessageFactoryWithSendGrid);
+
+            msgService.Run();
 
             Console.ReadLine();
         }

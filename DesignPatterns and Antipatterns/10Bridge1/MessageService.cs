@@ -6,23 +6,36 @@ namespace _10Bridge1
     {
         private EmailService service;
         private IPersonRepository repo;
-        private Templating template;
-        private Func<Person> p;
-        private Person person;
+        private AbstractTemplating template;
+        private AbstractMessageFactory messageFactory;
 
-        public MessageService(EmailService service, IPersonRepository repo, Templating template)
+        public MessageService(AbstractMessageFactory messageFactory)
         {
-            this.service = service;
-            this.repo = repo;
-            this.template = template;
+            this.messageFactory = messageFactory;
+            this.service = messageFactory.EmailServiceFactory();
+            this.repo = messageFactory.RepositoryFactory();
+            this.template = messageFactory.TemplateFactory();
         }
+
+        //public MessageService(EmailService service, IPersonRepository repo, Templating template)
+        //{
+        //    this.service = service;
+        //    this.repo = repo;
+        //    this.template = template;
+        //}
 
         
         public void Run()
         {
-            var person = repo.GetBirthdayPersons();
-            var message = template.GetMessageFor(person);
-            service.Send(message);
+            var persons = repo.GetPersonForMessages();
+            foreach (var person in persons)
+            {
+                var message = template.GetMessageFor(person);
+                service.Send(message);
+                Console.WriteLine();
+            }
+
+
         }
     }
 }
