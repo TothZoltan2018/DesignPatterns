@@ -15,7 +15,6 @@ namespace _00Data
         public AddressContext() : base("AddressDbContext") { }
         
         public DbSet<Myaddress> Myaddresses { get; set; }
-
     }
 
     /// <summary>
@@ -30,7 +29,7 @@ namespace _00Data
         }
     }
 
-    internal class MyStrategy : SqlAzureExecutionStrategy // A Microsoft strategiaja, ezt kell egy kicsit modositanunk
+    public class MyStrategy : SqlAzureExecutionStrategy // A Microsoft strategiaja, ezt kell egy kicsit modositanunk
     {
         public MyStrategy(int maxRetryCount, TimeSpan maxDelay) : base(maxRetryCount, maxDelay)
         {         
@@ -53,6 +52,7 @@ namespace _00Data
 
             //var sqlException = (SqlException)exception; //Ezzel is jonak tunik
             var sqlException = exception as SqlException;
+            //ha valoban sql exception van
             if (sqlException != null)
             {
                 foreach (SqlError e in sqlException.Errors)
