@@ -14,15 +14,30 @@ namespace _12BuilderPelda
 
         public void BuildPC()
         {
-            computer.Processor = Processor.x64;            
+            BuildHardware();
+            InstallOS();
+            InstallApplications();
+            //nem kell visszaterni, mert referencia valtzot vettunk at
+            //return computer;
+        }
+
+        private void InstallApplications()
+        {
+            computer.Applications = new List<string> { "MSSQL", "VisualStudio", "VLC" };
+        }
+
+        private void InstallOS()
+        {
+            computer.OS = OS.Windows7;
+        }
+
+        private void BuildHardware()
+        {
+            computer.Processor = Processor.x64;
             computer.HDD = 120;
             computer.HasDVD = true;
             computer.HasSoundCard = true;
             computer.HasUSB = true;
-            computer.OS = OS.Windows7;
-            computer.Applications = new List<string> { "MSSQL", "VisualStudio", "VLC" };
-            //nem kell visszaterni, mert referencia valtzot vettunk at
-            //return computer;
         }
 
         public Computer GetPC()
