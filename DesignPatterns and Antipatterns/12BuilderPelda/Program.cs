@@ -9,24 +9,31 @@ namespace _12BuilderPelda
     class Program
     {
         static void Main(string[] args)
-        {            
-            var builder1 = new PCBuilderForWindows();
+        {
+            //var builder1 = new PCBuilderForWindows();
 
-            builder1.CreatePC();
-            builder1.BuildPC();
-            var computer1 = builder1.GetPC();
-                        
-            computer1.Display();
+            //builder1.CreatePC();
+            //builder1.BuildPC();
+            //var computer1 = builder1.GetPC();
 
-            Console.WriteLine("-------------------------------------");
+            //computer1.Display();
 
-            var builder2 = new PCBuilderForLinux();
+            //Console.WriteLine("-------------------------------------");
 
-            builder2.CreatePC();
-            builder2.BuildPC();
-            var computer2 = builder2.GetPC();
+            //var builder2 = new PCBuilderForLinux();
 
-            computer2.Display();
+            //builder2.CreatePC();
+            //builder2.BuildPC();
+            //var computer2 = builder2.GetPC();
+
+            //computer2.Display();
+
+            var director = new NormalPCDirector(new PCBuilderForWindows());
+
+            director.BuildPC();
+            var computer = director.GetPC();
+
+            computer.Display();
 
             Console.Read();
         }

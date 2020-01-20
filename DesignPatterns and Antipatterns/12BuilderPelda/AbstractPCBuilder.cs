@@ -1,5 +1,8 @@
 ﻿namespace _12BuilderPelda
 {
+    /// <summary>
+    /// Ez az osszeszereles alacsony szintu lepeseinek az osztalya
+    /// </summary>
     public abstract class AbstractPCBuilder
     {
         protected Computer computer;
@@ -7,15 +10,6 @@
         public void CreatePC()
         {
             computer = new Computer();
-        }
-
-        public void BuildPC()
-        {
-            BuildHardware();
-            InstallOS();
-            InstallApplications();
-            //nem kell visszaterni, mert referencia valtzot vettunk at
-            //return computer;
         }
 
         public abstract void InstallApplications();
