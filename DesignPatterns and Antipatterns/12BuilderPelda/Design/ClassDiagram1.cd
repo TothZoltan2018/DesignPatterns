@@ -21,8 +21,16 @@
       <Property Name="OS" />
     </ShowAsAssociation>
   </Class>
+  <Class Name="_12BuilderPelda.PCBuilderForLinux">
+    <Position X="0.75" Y="3.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>PCBuilderForLinux.cs</FileName>
+      <NewMemberFileName>PCBuilderForWindows.cs</NewMemberFileName>
+    </TypeIdentifier>
+  </Class>
   <Class Name="_12BuilderPelda.PCBuilderForWindows">
-    <Position X="0.5" Y="1.25" Width="1.75" />
+    <Position X="3" Y="3.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAgAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
       <FileName>PCBuilderForWindows.cs</FileName>
