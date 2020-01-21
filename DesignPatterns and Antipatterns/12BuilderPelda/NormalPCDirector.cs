@@ -9,26 +9,18 @@ namespace _12BuilderPelda
     /// <summary>
     /// A letrehozas magasabb szintu vezerloje, a builder lepeseit iranyitja
     /// </summary>
-    class NormalPCDirector
+    public class NormalPCDirector : AbstractPCDirector
     {
-        private AbstractPCBuilder builder;
-
-        public NormalPCDirector(AbstractPCBuilder builder)
+        public NormalPCDirector(AbstractPCBuilder builder) : base(builder)
         {
-            this.builder = builder;
         }
 
-        public void BuildPC()
+        public override void BuildPC()
         {
             builder.CreatePC();
             builder.BuildHardware();
             builder.InstallOS();
             builder.InstallApplications();
-        }
-
-        public Computer GetPC()
-        {
-            return builder.GetPC();
         }
     }
 }
