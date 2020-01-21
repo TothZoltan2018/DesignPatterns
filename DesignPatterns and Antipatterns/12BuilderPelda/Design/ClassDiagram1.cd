@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <ClassDiagram MajorVersion="1" MinorVersion="1">
   <Class Name="_12BuilderPelda.AbstractPCBuilder">
-    <Position X="3" Y="1" Width="1.75" />
+    <Position X="4.5" Y="1" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAgAAAgAAAAAAAAAAAAEAAAAAAAAACAgAAAQAA=</HashCode>
       <FileName>AbstractPCBuilder.cs</FileName>
@@ -11,7 +11,17 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="_12BuilderPelda.Computer">
-    <Position X="5.75" Y="0.75" Width="1.5" />
+    <Position X="7.25" Y="0.75" Width="1.5" />
+    <AssociationLine Name="Processor" Type="_12BuilderPelda.Processor">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.318" Y="0.05" />
+      </MemberNameLabel>
+    </AssociationLine>
+    <AssociationLine Name="OS" Type="_12BuilderPelda.OS">
+      <MemberNameLabel ManuallyPlaced="true">
+        <Position X="0.683" Y="0.081" />
+      </MemberNameLabel>
+    </AssociationLine>
     <TypeIdentifier>
       <HashCode>AAAgAAAAABAAQAAAAAAAAQAAAAAAAAAAAAAAQAgEAAE=</HashCode>
       <FileName>Computer.cs</FileName>
@@ -22,7 +32,7 @@
     </ShowAsAssociation>
   </Class>
   <Class Name="_12BuilderPelda.PCBuilderForLinux">
-    <Position X="0.75" Y="3.75" Width="1.75" />
+    <Position X="4.25" Y="3.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAgAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
       <FileName>PCBuilderForLinux.cs</FileName>
@@ -30,31 +40,45 @@
     </TypeIdentifier>
   </Class>
   <Class Name="_12BuilderPelda.PCBuilderForWindows">
-    <Position X="3" Y="3.75" Width="1.75" />
+    <Position X="6.25" Y="3.75" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAgAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
       <FileName>PCBuilderForWindows.cs</FileName>
     </TypeIdentifier>
   </Class>
-  <Class Name="_12BuilderPelda.NormalPCDirector">
+  <Class Name="_12BuilderPelda.AbstractPCDirector">
     <Position X="0.5" Y="1" Width="1.75" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIABAAAAAAgAAAAAA=</HashCode>
-      <FileName>NormalPCDirector.cs</FileName>
+      <FileName>AbstractPCDirector.cs</FileName>
     </TypeIdentifier>
     <ShowAsAssociation>
       <Field Name="builder" />
     </ShowAsAssociation>
   </Class>
+  <Class Name="_12BuilderPelda.PCDirectorForNormalPCWithoutApplications">
+    <Position X="0.5" Y="3.25" Width="3.25" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>PCDirectorForNormalPCWithoutApplications.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="_12BuilderPelda.PCDirectorForNormalPCWithApplications">
+    <Position X="0.5" Y="5.25" Width="3" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>PCDirectorForNormalPCWithApplications.cs</FileName>
+    </TypeIdentifier>
+  </Class>
   <Enum Name="_12BuilderPelda.OS">
-    <Position X="8.5" Y="2.25" Width="1.5" />
+    <Position X="10" Y="2.25" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAAAGCAAAAAAgIAAAAAAAAAAAAAgBAAAAAAAAA=</HashCode>
       <FileName>OS.cs</FileName>
     </TypeIdentifier>
   </Enum>
   <Enum Name="_12BuilderPelda.Processor">
-    <Position X="8.5" Y="0.5" Width="1.5" />
+    <Position X="10" Y="0.5" Width="1.5" />
     <TypeIdentifier>
       <HashCode>AAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAUIAAAAA=</HashCode>
       <FileName>Processor.cs</FileName>

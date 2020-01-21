@@ -7,6 +7,12 @@ namespace _12BuilderPelda
 {
     public class Computer
     {
+        public Computer()
+        {
+            //null object pattern
+            Applications = new List<string>();
+        }
+
         [JsonConverter(typeof(StringEnumConverter))] //Ez kell, hogy ne az enum szamerteket, hanem a nevet jelenitsuk meg
         public Processor Processor { get; set; }
 
