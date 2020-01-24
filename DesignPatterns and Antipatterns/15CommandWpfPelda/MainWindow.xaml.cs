@@ -26,18 +26,5 @@ namespace _15CommandWpfPelda
             InitializeComponent();
         }
 
-        private void Start_Click(object sender, RoutedEventArgs e)
-        {
-            //A MainWindowViewModel.cs-ben definialt Start() fgv-t hivja meg.
-            ((MainWindowViewModel)this.DataContext).Start();
-            
-        }
-
-        private void Stop_Click(object sender, RoutedEventArgs e)
-        {
-            //A MainWindowViewModel.cs-ben definialt Stop() fgv-t hivja meg.
-            ((MainWindowViewModel)this.DataContext).Stop();
-
-        }
     }
 }
