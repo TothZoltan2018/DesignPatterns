@@ -3,5 +3,8 @@
 ## View: MainWindow.xaml
 ## ViewModel: MainWindowViewModel.cs
 
-## DataBinding: Ami a ViewModel adatain valtozik, azt a View automatikusan megjeleniti. Ehez a MainWindow.xaml-ben meg kell mondani, hogy melyik ViewModel-t hasznaljuk
-.
+## DataBinding: Ami a ViewModel adatain valtozik, azt a View automatikusan megjeleniti. Ehez a MainWindow.xaml-ben meg kell mondani, hogy melyik ViewModel-t hasznaljuk.
+
+
+https://blog.codinghorror.com/code-smells/
+https://sourcemaking.com/refactoring/smells
