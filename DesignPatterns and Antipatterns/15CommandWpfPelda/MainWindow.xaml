@@ -11,8 +11,15 @@
     </Window.DataContext>
     <Grid>
         <!--A ProgressValue a MainWindowViewModel.cs-ben deklaralt.-->
-        <ProgressBar Margin="10" Height="20" VerticalAlignment="Top" Value="{Binding ProgressValue}"/>        
-        <Button VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10" Content="Inditas" Padding="20" Command="{Binding StartCommand }" />
+        <ProgressBar Margin="10" Height="20" VerticalAlignment="Top" Value="{Binding ProgressValue}">
+            <ProgressBar.ContextMenu>
+            <ContextMenu>
+                    <MenuItem Header="Elinditas" Command="{Binding StartCommand}" />
+                    <MenuItem Header="Leallitas" Command="{Binding StopCommand}" />
+                </ContextMenu>
+          </ProgressBar.ContextMenu>           
+        </ProgressBar>
+            <Button VerticalAlignment="Bottom" HorizontalAlignment="Left" Margin="10" Content="Inditas" Padding="20" Command="{Binding StartCommand}" />
         <Button VerticalAlignment="Bottom" HorizontalAlignment="Right" Margin="10" Content="Leallitas" Padding="20" Command="{Binding StopCommand}"/>
     </Grid>
 </Window>

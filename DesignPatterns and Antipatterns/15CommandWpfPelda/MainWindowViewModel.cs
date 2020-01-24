@@ -85,7 +85,6 @@ namespace _15CommandWpfPelda
             }                
         }
 
-
         public async void Start()
         {
             //A Task megallitasahoz
